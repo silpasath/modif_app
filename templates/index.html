@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>CHURN PREDICTION API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Customer Churn</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <select name="gender" id="gender">
+		  <option value="0">Male</option>
+		  <option value="1">Female</option>
+		</select>
+		<select name="SeniorCitizen" id="SeniorCitizen">
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select>
+		<select name="Partner" id="Partner">
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select>
+		<select name="Dependents" id="Dependents">
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select>
+		<input type="text" name="tenure" placeholder="tenure" required="required" />
+		<select name="PhoneService" id="PhoneService">
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select>
+		<select name="MultipleLines" id="MultipleLines">
+		  <option value="0">No</option>
+		  <option value="1">No phone service</option>
+		  <option value="2">Yes</option>
+		</select>
+		<select name="InternetService" id="InternetService">
+		  <option value="0">DSL</option>
+		  <option value="1">Fiber optic</option>
+		  <option value="2">No</option>
+		</select>
+		<select name="OnlineSecurity" id="OnlineSecurity">
+		  <option value="0">No</option>
+		  <option value="1">No internet service</option>
+		  <option value="2">Yes</option>
+		</select>
+		<select name="OnlineBackup" id="OnlineBackup">
+		  <option value="0">No</option>
+		  <option value="1">No internet service</option>
+		  <option value="2">Yes</option>
+		</select><select name="DeviceProtection" id="DeviceProtection">
+		  <option value="0">No</option>
+		  <option value="1">No internet service</option>
+		  <option value="2">Yes</option>
+		</select>
+		</select><select name="TechSupport" id="TechSupport">
+		  <option value="0">No</option>
+		  <option value="1">No internet service</option>
+		  <option value="2">Yes</option>
+		</select>
+		</select><select name="StreamingTV" id="StreamingTV">
+		  <option value="0">No</option>
+		  <option value="1">No internet service</option>
+		  <option value="2">Yes</option>
+		</select>
+		</select><select name="StreamingMovies" id="StreamingMovies">
+		  <option value="0">No</option>
+		  <option value="1">No internet service</option>
+		  <option value="2">Yes</option>
+		</select>
+		</select><select name="Contract" id="Contract">
+		  <option value="0">Month-to-month</option>
+		  <option value="1">One year</option>
+		  <option value="2">Two year</option>
+		</select>
+		<select name="PaperlessBilling" id="PaperlessBilling">
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select>
+		</select><select name="PaymentMethod" id="PaymentMethod">
+		  <option value="0">Bank transfer(automatic)</option>
+		  <option value="1">Credit card(automatic)</option>
+		  <option value="2">Electronic check</option>
+		  <option value="3">Mailed check</option>
+		</select>
+		<input type="text" name="MonthlyCharges" placeholder="MonthlyCharges" required="required" />
+		<input type="text" name="TotalCharges" placeholder="TotalCharges" required="required" />
+		
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
